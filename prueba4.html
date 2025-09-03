@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocina con Papacrack</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+        body {
+            font-family: 'Luckiest Guy', cursive;
+            background: url('https://tr.rbxcdn.com/3a1a0f0ec4cbe3a02bc12b79a8d171c1/768/432/Image/Webp') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            cursor: url('https://cur.cursors-4u.net/games/gam-13/gam1245.cur'), auto;
+        }
+        header {
+            background: linear-gradient(to right, #ff4d4d, #ff9900);
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5em;
+            border-bottom: 5px solid #ffcc00;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ffcc00, 0 0 10px #ff9900; }
+            to { text-shadow: 0 0 15px #ffcc00, 0 0 25px #ff6600; }
+        }
+        nav {
+            background: #222;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a, .dropbtn {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            background: #ff4d4d;
+            border: 3px solid #ffcc00;
+            border-radius: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        nav a:hover, .dropbtn:hover {
+            background: #ffcc00;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        /* Menú desplegable */
+        .dropdown { display: inline-block; position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222;
+            min-width: 180px;
+            border: 3px solid #ffcc00;
+            border-radius: 8px;
+            top: 45px;
+            z-index: 10;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            margin: 0;
+            background: #ff4d4d;
+            color: #ffcc00;
+            text-decoration: none;
+            border-bottom: 1px solid #ffcc00;
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #ffcc00; color: black; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        main { padding: 20px; }
+        section {
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 4px solid #ffcc00;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #ffcc00;
+            font-size: 2em;
+            animation: glitch 1.5s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px,2px); }
+            40% { transform: translate(-2px,-2px); }
+            60% { transform: translate(2px,2px); }
+            80% { transform: translate(2px,-2px); }
+            100% { transform: translate(0); }
+        }
+
+        .receta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .receta img {
+            width: 250px;
+            border: 3px solid #ffcc00;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .receta img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+        }
+
+        .texto-animado {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #ffcc00;
+            animation: escribir 4s steps(40) 1 normal both;
+        }
+        @keyframes escribir { from { width: 0; } to { width: 100%; } }
+
+        footer {
+            background: #222;
+            color: #ffcc00;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+            border-top: 5px solid #ffcc00;
+        }
+
+        /* Botón flotante */
+        #btnArriba {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00ffcc;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 2em;
+            cursor: pointer;
+            animation: pulso 1.5s infinite;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+        @keyframes pulso {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Formulario Roblox */
+        form {
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border: 4px solid #ffcc00;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 3px solid #ffcc00;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+            font-size: 1.1em;
+        }
+        form button {
+            background: #ff4d4d;
+            border: 3px solid #ffcc00;
+            padding: 12px 20px;
+            color: #ffcc00;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        form button:hover {
+            transform: translateY(2px);
+            background: #ffcc00;
+            color: black;
+        }
+
+        /* Reproductor */
+        #musicPlayer {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: #111;
+            padding: 10px;
+            border: 3px solid #ffcc00;
+            border-radius: 10px;
+        }
+
+        /* Logro desbloqueado */
+        #logro {
+            position: fixed;
+            top: 20px;
+            right: -300px;
+            background: #00ffcc;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            box-shadow: 0 0 15px #00ffcc;
+            transition: right 0.5s;
+        }
+        #logro.mostrar {
+            right: 20px;
+        }
+
+        /* Estilo especial para descargas */
+        .descargas ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .descargas li {
+            margin: 15px 0;
+        }
+        .descargas a {
+            text-decoration: none;
+            color: white;
+            background-color: #007ACC;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #ffcc00;
+            transition: 0.3s;
+        }
+        .descargas a:hover {
+            background-color: #005A99;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        🍔 Cocina con Papacrack 🍕
+    </header>
+    <nav>
+        <a href="#">Inicio</a>
+        <div class="dropdown">
+            <span class="dropbtn">Recetas</span>
+            <div class="dropdown-content">
+                <a href="receta1.html">Receta 1</a>
+                <a href="receta2.html">Receta 2</a>
+                <a href="receta3.html">Receta 3</a>
+                <a href="receta4.html">Receta 4</a>
+            </div>
+        </div>
+        <a href="#">Tips</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Receta Robloxiana del Día</h2>
+            <div class="receta">
+                <img src="images.jpg" alt="Platillo delicioso">
+                <div class="texto-animado">
+                    Hoy preparamos una <strong>Pizza Pixelada</strong> 🍕 con ingredientes súper coloridos y mucho estilo gamer. ¡Perfecta para comer mientras juegas Roblox!
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Tip de Cocina Gamer</h2>
+            <p>Siempre ten snacks listos antes de iniciar una partida, así evitas que tu personaje muera de hambre… ¡y tú también! 😆</p>
+        </section>
+
+        <section>
+            <h2>Formulario de Sugerencias</h2>
+            <form id="formSugerencias">
+                <input type="text" name="nombre" placeholder="👤 Tu nombre" required>
+                <input type="email" name="correo" placeholder="📧 Tu correo" required>
+                <input type="text" name="comida" placeholder="🍔 ¿Cuál es tu comida favorita?" required>
+                <input type="text" name="juegos" placeholder="🎮 ¿Qué juegos juegas?" required>
+                <textarea name="sugerencia" placeholder="📝 Tu sugerencia de receta..." required></textarea>
+                <button type="submit">Enviar 🚀</button>
+            </form>
+        </section>
+
+        <!-- Nueva sección de descargas de trípticos -->
+        <section class="descargas">
+            <h2>📂 Descarga de Trípticos</h2>
+            <p>Haz clic en los enlaces para descargar los trípticos en PDF:</p>
+            <ul>
+                <li><a href="Menu1.pdf" download>Descargar Tríptico 1</a></li>
+                <li><a href="m.pdf" download>Descargar Tríptico 2</a></li>
+                <li><a href="logo2.pdf" download>Descargar Tríptico 3</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        © 2025 Cocina con Papacrack - Donde el sabor se vuelve un juego
+    </footer>
+
+    <!-- Botón Arriba -->
+    <button id="btnArriba">↑</button>
+
+    <!-- Reproductor Gamer -->
+    <div id="musicPlayer">
+        <audio id="audio" loop>
+            <source src="https://files.catbox.moe/tw8n0l.mp3" type="audio/mpeg">
+        </audio>
+        <button onclick="toggleMusic()">🎵 Play/Stop</button>
+    </div>
+
+    <!-- Logro desbloqueado -->
+    <div id="logro">🏆 ¡Logro desbloqueado!</div>
+
+    <script>
+        // Botón volver arriba
+        document.getElementById("btnArriba").addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Música
+        const audio = document.getElementById("audio");
+        function toggleMusic() {
+            if(audio.paused){ audio.play(); }
+            else { audio.pause(); }
+        }
+
+        // Logro desbloqueado en scroll
+        window.addEventListener("scroll", () => {
+            const logro = document.getElementById("logro");
+            logro.classList.add("mostrar");
+            setTimeout(()=> logro.classList.remove("mostrar"), 2000);
+        });
+
+        // Confeti al enviar formulario
+        document.getElementById("formSugerencias").addEventListener("submit", (e)=>{
+            e.preventDefault();
+            alert("Gracias por tu sugerencia! 🎉");
+            lanzarConfeti();
+        });
+
+        function lanzarConfeti(){
+            for(let i=0; i<20; i++){
+                let confeti = document.createElement("div");
+                confeti.innerHTML = "⭐";
+                confeti.style.position="fixed";
+                confeti.style.left=Math.random()*100+"%";
+                confeti.style.top="0px";
+                confeti.style.fontSize="20px";
+                confeti.style.animation="caer 3s linear";
+                document.body.appendChild(confeti);
+                setTimeout(()=> confeti.remove(),3000);
+            }
+        }
+
+        // Animación confeti
+        const style = document.createElement("style");
+        style.innerHTML = `
+        @keyframes caer {
+            from { transform: translateY(0); }
+            to { transform: translateY(100vh); }
+        }`;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
